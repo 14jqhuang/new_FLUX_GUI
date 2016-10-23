@@ -148,12 +148,16 @@ public class LoginGui extends JFrame {
 		 		else{
 		 			//进入验证阶段
 		 	        Login login=new Login();
-		 			login.Login(str1, str2);
-		 			//如果成功登录就关闭当前这个界面，跳转到动态显示流量的页面
-		 			if(login.Login(str1, str2))
-		 			{
-		 				jFrame.dispose();
-		 			}
+		 			try {
+		 				if(login.Login(str1, str2))
+						{
+							jFrame.dispose();
+						}
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						
+					}
+		 			
 		 	    }
 		 		
 		 	    
@@ -181,10 +185,10 @@ public class LoginGui extends JFrame {
 	}
 	
 	   
-	/*public static void main(String args[]) throws Exception
+	public static void main(String args[]) throws Exception
 	{
 		new LoginGui();
-	}*/
+	}
 	
 	
 	

@@ -2,7 +2,9 @@ package com.nicole.loginout;
 
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.ConnectException;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 
 import javax.swing.JOptionPane;
@@ -13,7 +15,7 @@ import loginoutGUI.SuccLogin;
 
 public class Login 
 {
-	public boolean Login(String username,String password)
+	public boolean Login(String username,String password) throws Exception
 	{
 		boolean issuccessed=false;
 		try { 
@@ -68,8 +70,7 @@ public class Login
 	                       }
 	                       case "用户已在线，不需要再次认证":
 	                       {
-	                    	   SuccLogin succLogin= new SuccLogin();
-	        	               succLogin.Slogin();
+	                    	   JOptionPane.showMessageDialog(null, "you are online,don't login again", "Warning", JOptionPane.ERROR_MESSAGE);
 	        	              // succLogin.refresh();
 	        	               issuccessed=true;
 	        	               break;
@@ -94,13 +95,13 @@ public class Login
 		
 	  }catch(Exception e)
 		{
-		  e.printStackTrace();
+		   JOptionPane.showMessageDialog(null, "Internet disconnect", "Warning", JOptionPane.ERROR_MESSAGE);
 		}
 		return issuccessed;
 	}
 	
-	public static void main(String[] args) {
+	/*public static void main(String[] args) throws Exception {
 		Login login=new Login();
 		login.Login("14myhe","yiSTU0209");
-	}
+	}*/
 }
