@@ -47,8 +47,12 @@ public class Getflux {
 		                InputStream in = httpConn.getInputStream();
 		                String a = "null";
 		                try {
-		                    byte[] data1 = new byte[in.available()];
-		                    in.read(data1);
+		                	int count = 0; 
+		                    while (count == 0) { 
+		                	   count = in.available(); 
+		                	  } 
+		                	  byte[]  data1= new byte[count]; 
+		                	  in.read(data1);
 		                    // 转成字符串
 		                    a = new String(data1);
 		                    
@@ -57,15 +61,20 @@ public class Getflux {
 		                    int usernamerange=a.indexOf("日流量额");
 		                    int todayfluxrange=a.indexOf("当天流量");
 		                    int currentfluxrange=a.indexOf("过期时间");
-		                    System.out.println("username:"+usernamerange);
+		                    System.out.println("a的长度为："+a.length());
+		                    System.out.println("字符串的值为："+a);
+		                    
 		                    //int test=a.indexOf("流量信息如下：");
 		                    //System.out.println("test大小为："+test);
+		       
 		                    String uname=a.substring(106,usernamerange-20);
+		                    
 		                    String todayflux=a.substring(todayfluxrange-22,todayfluxrange-20);
 		                    String currentflux=a.substring(todayfluxrange+15,currentfluxrange-20);
 		                    result[0]=uname;
 		                    result[1]=todayflux;
 		                    result[2]=currentflux;
+		                   
 		                 // System.out.println("输出的信息为"+a);
 		                } catch (Exception e1) {
 		                    // TODO Auto-generated catch block

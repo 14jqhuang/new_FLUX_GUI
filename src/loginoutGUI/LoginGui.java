@@ -155,6 +155,7 @@ public class LoginGui extends JFrame {
 						}
 					} catch (Exception e1) {
 						// TODO Auto-generated catch block
+						e1.printStackTrace();
 						
 					}
 		 			

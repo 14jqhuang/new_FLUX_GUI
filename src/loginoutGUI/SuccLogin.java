@@ -129,34 +129,18 @@ public class SuccLogin{
     	e.printStackTrace();
     }
   }
-	/*public void refresh()  {
-		  // run in a second
-		  final long timeInterval = 3000;
-		  Runnable runnable = new Runnable() {
-		  public void run() {
 	
-		    while (true) {
-		      try {
-		    	Getflux getflux=new Getflux();
-		      	result=getflux.Getfluxs();
-		      	flux_used.setText(result[2]);
-		      	
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-		      
-		      try {
-		       Thread.sleep(timeInterval);
-		      } catch (InterruptedException e) {
-		        e.printStackTrace();
-		      }
-		      }
-		    }
-		  };
-		  Thread thread = new Thread(runnable);
-		  thread.start();
-		 }
-	*/
+  public void refresh()  {
+		  Runnable runnable = new Runnable() {
+		    	 public void run() {
+		    		    Getflux getflux=new Getflux();
+		    		    result=getflux.Getfluxs();
+		    			flux_used.setText(result[2]);
+		    		}
+		    };
+		    ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
+		    service.scheduleAtFixedRate(runnable, 0, 3, TimeUnit.SECONDS);
+}
+		    					
 	
 }

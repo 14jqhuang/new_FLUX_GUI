@@ -48,9 +48,12 @@ public class Login
 	                System.out.println("count: "+in.available());
 	                String a = null;
 	                try {
-	                    byte[] data1 = new byte[in.available()];
-	                    System.out.println("data1 : "+data1);
-	                    in.read(data1);
+	                	int count = 0; 
+	                    while (count == 0) { 
+	                	   count = in.available(); 
+	                	  } 
+	                	  byte[]  data1= new byte[count]; 
+	                	  in.read(data1);
 	                    // 转成字符串
 	                    a = new String(data1);
 	                    System.out.println("getdata:"+a);
@@ -63,15 +66,13 @@ public class Login
 	                       {
 	                    	   SuccLogin succLogin= new SuccLogin();
 	        	               succLogin.Slogin();
-	        	               
-	        	            //   succLogin.refresh();
+	        	               succLogin.refresh();
 	        	               issuccessed=true;
 	        	               break;
 	                       }
 	                       case "用户已在线，不需要再次认证":
 	                       {
 	                    	   JOptionPane.showMessageDialog(null, "you are online,don't login again", "Warning", JOptionPane.ERROR_MESSAGE);
-	        	              // succLogin.refresh();
 	        	               issuccessed=true;
 	        	               break;
 	                       }
